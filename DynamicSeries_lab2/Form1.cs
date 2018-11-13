@@ -9,12 +9,14 @@ namespace DynamicSeries_lab2
     {
         public DynamicSeries Series { get; set; }
         public DynamicSeries SeriesAfterSmoothing { get; set; }
+        public LinearRegression LinearRegression { get; set; }
 
         public Form1()
         {
             InitializeComponent();
         }
 
+        #region SmoothingTab
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
             using (var openFile = new OpenFileDialog())
@@ -57,17 +59,14 @@ namespace DynamicSeries_lab2
                 chSmoothing.Series[0].Points.AddXY(SeriesAfterSmoothing.Index[i], SeriesAfterSmoothing.Value[i]);
             }
         }
+        #endregion
 
+        #region LinearRegressionTab
         private void btnCount_Click(object sender, EventArgs e)
         {
-            if(rbWithoutSmoothing.Checked)
-            {
-
-            }
-            else
-            {
-
-            }
+            FillLinearTrendChart(rbWithSmoothing.Checked);
+            tbA0.Text = Math.Round(LinearRegression.A0, 4).ToString();
+            tbA1.Text = Math.Round(LinearRegression.A1, 4).ToString();
         }
 
         private void rbWithoutSmoothing_Click(object sender, EventArgs e)
@@ -81,5 +80,32 @@ namespace DynamicSeries_lab2
             rbWithSmoothing.Checked = true;
             rbWithoutSmoothing.Checked = false;
         }
+
+        private void FillLinearTrendChart(bool withSmoothing)
+        {
+            chLinearTrend.Series[0].Points.Clear();
+            chLinearTrend.Series[1].Points.Clear();
+            if (withSmoothing)
+            {
+                LinearRegression = new LinearRegression(SeriesAfterSmoothing.Value);
+                for (int i = 0; i < SeriesAfterSmoothing.AmountOfElements; i++)
+                {
+                    chLinearTrend.Series[0].Points.AddXY(SeriesAfterSmoothing.Index[i], SeriesAfterSmoothing.Value[i]);
+                }
+            }
+            else
+            {
+                LinearRegression = new LinearRegression(Series.Value);
+                for (int i = 0; i < SeriesAfterSmoothing.AmountOfElements; i++)
+                {
+                    chLinearTrend.Series[0].Points.AddXY(Series.Index[i], Series.Value[i]);
+                }
+            }
+            for (int i = 0; i < SeriesAfterSmoothing.AmountOfElements; i++)
+            {
+                chLinearTrend.Series[1].Points.AddXY(Series.Index[i], LinearRegression.A0 + LinearRegression.A1*(i+1));
+            }
+        }
+        #endregion
     }
 }

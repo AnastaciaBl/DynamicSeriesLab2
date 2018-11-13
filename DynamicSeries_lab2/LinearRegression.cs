@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DynamicSeries_lab2
 {
@@ -22,13 +23,17 @@ namespace DynamicSeries_lab2
 
         private double FindFirstParameter(double simpleSum, double complexSum, int amountOfElements)
         {
-            double param = 0;
+            double param;
+            double n2 = amountOfElements * amountOfElements;
+            double n4 = Math.Pow(amountOfElements, 4);
+            param = (2 * n2 + 2) * (simpleSum * (2 * amountOfElements + 1) - 3 * complexSum) / (n4 - n2);
             return param;
         }
 
         private double FindSecondParameter(double simpleSum, double complexSum, int amountOfElements)
         {
-            double param = 0;
+            double param = 6 * (2 * complexSum - simpleSum * (amountOfElements + 1)) /
+                    (Math.Pow(amountOfElements, 3) - amountOfElements);
             return param;
         }
 
