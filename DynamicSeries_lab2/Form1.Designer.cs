@@ -35,6 +35,9 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.tbWindow = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,25 +46,34 @@
             this.chSmoothing = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chNormal = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbA1 = new System.Windows.Forms.TextBox();
+            this.tbA0 = new System.Windows.Forms.TextBox();
+            this.chLinearTrend = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbWithoutSmoothing = new System.Windows.Forms.RadioButton();
             this.btnCount = new System.Windows.Forms.Button();
             this.rbWithSmoothing = new System.Windows.Forms.RadioButton();
-            this.chLinearTrend = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tbA0 = new System.Windows.Forms.TextBox();
-            this.tbA1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.chNotLinear = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbNotLinearA1 = new System.Windows.Forms.TextBox();
+            this.tbNotLinearA0 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chSmoothing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chNormal)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chLinearTrend)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chLinearTrend)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chNotLinear)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOpenFile
@@ -158,6 +170,71 @@
             this.tabPage2.Text = "Find linear trend";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.tbA1);
+            this.groupBox2.Controls.Add(this.tbA0);
+            this.groupBox2.Location = new System.Drawing.Point(433, 157);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(250, 104);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Linear coefficients";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "A1:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "A0:";
+            // 
+            // tbA1
+            // 
+            this.tbA1.Location = new System.Drawing.Point(53, 60);
+            this.tbA1.Name = "tbA1";
+            this.tbA1.Size = new System.Drawing.Size(182, 20);
+            this.tbA1.TabIndex = 1;
+            // 
+            // tbA0
+            // 
+            this.tbA0.Location = new System.Drawing.Point(53, 34);
+            this.tbA0.Name = "tbA0";
+            this.tbA0.Size = new System.Drawing.Size(182, 20);
+            this.tbA0.TabIndex = 0;
+            // 
+            // chLinearTrend
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chLinearTrend.ChartAreas.Add(chartArea3);
+            this.chLinearTrend.Location = new System.Drawing.Point(6, 6);
+            this.chLinearTrend.Name = "chLinearTrend";
+            series3.ChartArea = "ChartArea1";
+            series3.CustomProperties = "PointWidth=1";
+            series3.Name = "Series1";
+            series4.BorderWidth = 3;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.CustomProperties = "LineTension=1";
+            series4.Name = "Series2";
+            this.chLinearTrend.Series.Add(series3);
+            this.chLinearTrend.Series.Add(series4);
+            this.chLinearTrend.Size = new System.Drawing.Size(422, 342);
+            this.chLinearTrend.TabIndex = 4;
+            this.chLinearTrend.Text = "chart1";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rbWithoutSmoothing);
@@ -204,79 +281,81 @@
             this.rbWithSmoothing.UseVisualStyleBackColor = true;
             this.rbWithSmoothing.Click += new System.EventHandler(this.rbWithSmoothing_Click);
             // 
-            // chLinearTrend
-            // 
-            chartArea3.Name = "ChartArea1";
-            this.chLinearTrend.ChartAreas.Add(chartArea3);
-            this.chLinearTrend.Location = new System.Drawing.Point(6, 6);
-            this.chLinearTrend.Name = "chLinearTrend";
-            series3.ChartArea = "ChartArea1";
-            series3.CustomProperties = "PointWidth=1";
-            series3.Name = "Series1";
-            series4.BorderWidth = 3;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.CustomProperties = "LineTension=1";
-            series4.Name = "Series2";
-            this.chLinearTrend.Series.Add(series3);
-            this.chLinearTrend.Series.Add(series4);
-            this.chLinearTrend.Size = new System.Drawing.Size(422, 342);
-            this.chLinearTrend.TabIndex = 4;
-            this.chLinearTrend.Text = "chart1";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.tbA1);
-            this.groupBox2.Controls.Add(this.tbA0);
-            this.groupBox2.Location = new System.Drawing.Point(433, 157);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(250, 104);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Linear coefficients";
-            // 
-            // tbA0
-            // 
-            this.tbA0.Location = new System.Drawing.Point(53, 34);
-            this.tbA0.Name = "tbA0";
-            this.tbA0.Size = new System.Drawing.Size(182, 20);
-            this.tbA0.TabIndex = 0;
-            // 
-            // tbA1
-            // 
-            this.tbA1.Location = new System.Drawing.Point(53, 60);
-            this.tbA1.Name = "tbA1";
-            this.tbA1.Size = new System.Drawing.Size(182, 20);
-            this.tbA1.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "A0:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 63);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "A1:";
-            // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox3);
+            this.tabPage3.Controls.Add(this.chNotLinear);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(691, 354);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Find no linear trend";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // chNotLinear
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chNotLinear.ChartAreas.Add(chartArea4);
+            this.chNotLinear.Location = new System.Drawing.Point(6, 6);
+            this.chNotLinear.Name = "chNotLinear";
+            series5.ChartArea = "ChartArea1";
+            series5.CustomProperties = "PointWidth=1";
+            series5.Name = "Series1";
+            series6.BorderWidth = 3;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.CustomProperties = "LineTension=1";
+            series6.Name = "Series2";
+            this.chNotLinear.Series.Add(series5);
+            this.chNotLinear.Series.Add(series6);
+            this.chNotLinear.Size = new System.Drawing.Size(422, 342);
+            this.chNotLinear.TabIndex = 5;
+            this.chNotLinear.Text = "chart1";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.tbNotLinearA1);
+            this.groupBox3.Controls.Add(this.tbNotLinearA0);
+            this.groupBox3.Location = new System.Drawing.Point(434, 17);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(250, 104);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Coefficients";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "A1:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "A0:";
+            // 
+            // tbNotLinearA1
+            // 
+            this.tbNotLinearA1.Location = new System.Drawing.Point(53, 60);
+            this.tbNotLinearA1.Name = "tbNotLinearA1";
+            this.tbNotLinearA1.Size = new System.Drawing.Size(182, 20);
+            this.tbNotLinearA1.TabIndex = 1;
+            // 
+            // tbNotLinearA0
+            // 
+            this.tbNotLinearA0.Location = new System.Drawing.Point(53, 34);
+            this.tbNotLinearA0.Name = "tbNotLinearA0";
+            this.tbNotLinearA0.Size = new System.Drawing.Size(182, 20);
+            this.tbNotLinearA0.TabIndex = 0;
             // 
             // Form1
             // 
@@ -292,11 +371,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.chSmoothing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chNormal)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chLinearTrend)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chLinearTrend)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chNotLinear)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -322,6 +405,12 @@
         private System.Windows.Forms.TextBox tbA0;
         private System.Windows.Forms.DataVisualization.Charting.Chart chLinearTrend;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbNotLinearA1;
+        private System.Windows.Forms.TextBox tbNotLinearA0;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chNotLinear;
     }
 }
 

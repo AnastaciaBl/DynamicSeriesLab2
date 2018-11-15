@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace DynamicSeries_lab2
 {
@@ -10,6 +11,7 @@ namespace DynamicSeries_lab2
         public DynamicSeries Series { get; set; }
         public DynamicSeries SeriesAfterSmoothing { get; set; }
         public LinearRegression LinearRegression { get; set; }
+        public NotLinearRegression NotLinearRegression { get; set; }
 
         public Form1()
         {
@@ -64,9 +66,15 @@ namespace DynamicSeries_lab2
         #region LinearRegressionTab
         private void btnCount_Click(object sender, EventArgs e)
         {
+            //linear trend
             FillLinearTrendChart(rbWithSmoothing.Checked);
             tbA0.Text = Math.Round(LinearRegression.A0, 4).ToString();
             tbA1.Text = Math.Round(LinearRegression.A1, 4).ToString();
+            //not linear trend
+            /*NotLinearRegression = new NotLinearRegression(LinearRegression.A0, LinearRegression.A1);
+            FillNotLinearRegressionChart(rbWithSmoothing.Checked);
+            tbNotLinearA0.Text = NotLinearRegression.A0.ToString();
+            tbNotLinearA1.Text = NotLinearRegression.A1.ToString();*/
         }
 
         private void rbWithoutSmoothing_Click(object sender, EventArgs e)
@@ -105,6 +113,27 @@ namespace DynamicSeries_lab2
             {
                 chLinearTrend.Series[1].Points.AddXY(Series.Index[i], LinearRegression.A0 + LinearRegression.A1*(i+1));
             }
+        }
+        #endregion
+
+        #region NotLinearRegressionTab
+        public void FillNotLinearRegressionChart(bool isSmoothing)
+        {
+            chNotLinear.Series[0].Points.Clear();
+            chNotLinear.Series[1].Points.Clear();
+            if (isSmoothing)
+            {
+                for (int i = 0; i < SeriesAfterSmoothing.AmountOfElements; i++)
+                    chNotLinear.Series[0].Points.AddXY(SeriesAfterSmoothing.Index[i], SeriesAfterSmoothing.Value[i]);
+            }
+            else
+            {
+                for (int i = 0; i < SeriesAfterSmoothing.AmountOfElements; i++)
+                    chNotLinear.Series[0].Points.AddXY(Series.Index[i], Series.Value[i]);
+            }
+
+            for (int i = 0; i < Series.AmountOfElements; i++)
+                chNotLinear.Series[1].Points.AddXY(Series.Index[i], NotLinearRegression.A0 + NotLinearRegression.A1 * (i + 1));
         }
         #endregion
     }
