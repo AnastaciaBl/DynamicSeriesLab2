@@ -70,29 +70,9 @@ namespace DynamicSeries_lab2
             FTest = Math.Round(MSR * (amountOfElements - AmountOfRegressionParameters) / MSE * (AmountOfRegressionParameters - 1), 4);
         }
 
-        private double CountQuantileFishera(int v1, int v2)
-        {
-            return 0;
-        }
-
-        private double CountQuantileStudenta(int v)
-        {
-            double answer = 0;
-            double u = 1.96;
-            //double v = data.AmountOfElements - 2;
-            answer += u;
-            answer += 1 / v * 0.25 * (Math.Pow(u, 3) + u);
-            answer += 1 / Math.Pow(v, 2) * 1.0 / 96 * (5 * Math.Pow(u, 5) + 16 * Math.Pow(u, 3) + 3 * u);
-            answer += 1 / Math.Pow(v, 3) * 1.0 / 384 * (3 * Math.Pow(u, 7) + 19 * Math.Pow(u, 5) + 17 * Math.Pow(u, 3) -
-                                                        15 * u);
-            answer += 1 / Math.Pow(v, 4) * 1.0 / 92160 * (79 * Math.Pow(u, 9) + 779 * Math.Pow(u, 7) + 1482 * Math.Pow(u, 5) -
-                                                          1920 * Math.Pow(u, 3) - 945 * u);
-            return Math.Round(answer, 4);
-        }
-
         public string IsAdequate(int amountOfElementsInSeries)
         {
-            return FTest > CountQuantileFishera(AmountOfRegressionParameters - 1,
+            return FTest > Quantile.CountQuantileFishera(AmountOfRegressionParameters - 1,
                        amountOfElementsInSeries - AmountOfRegressionParameters)
                 ? "адекватная"
                 : "неадекватная";
@@ -106,7 +86,7 @@ namespace DynamicSeries_lab2
         public string IsSignificant(int amountOfElementsInSeries)
         {
             double t = Math.Sqrt(R2) * Math.Sqrt(amountOfElementsInSeries - 2) / Math.Sqrt(1 - R2);
-            return Math.Abs(t) > CountQuantileStudenta(amountOfElementsInSeries - 2)
+            return Math.Abs(t) > Quantile.CountQuantileStudenta(amountOfElementsInSeries - 2)
                 ? "значимая"
                 : "не значимая";
         }

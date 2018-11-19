@@ -88,6 +88,8 @@ namespace DynamicSeries_lab2
                 $"{QualityIndicatorsNotLinearTrend.FTest}, {QualityIndicatorsNotLinearTrend.IsAdequate(Series.AmountOfElements)}";
             tbNotLinearTrendR2.Text =
                 $"{QualityIndicatorsNotLinearTrend.R2}, {QualityIndicatorsNotLinearTrend.IsSignificant(Series.AmountOfElements)}";*/
+
+            FillCorrelogramaChart(rbWithSmoothing.Checked);
         }
 
         private void rbWithoutSmoothing_Click(object sender, EventArgs e)
@@ -167,6 +169,18 @@ namespace DynamicSeries_lab2
                 /*QualityIndicatorsNotLinearTrend = new SeriesQuality(Series.Value, NotLinearRegression.A0,
                     NotLinearRegression.A1);*/
             }
+        }
+        #endregion
+
+        #region WithoutTrend
+        private void FillCorrelogramaChart(bool withSmoothing)
+        {
+            chCorrelogram.Series[0].Points.Clear();
+            var series = withSmoothing ? SeriesAfterSmoothing.Value : Series.Value;
+            var correlogramData = new AnalyzerForSeriesWithoutTrend(series);
+            if(correlogramData.WithoutTrend)
+                for (int i = 0; i < correlogramData.Correlation.Count; i++)
+                    chCorrelogram.Series[0].Points.AddXY(i + 1, correlogramData.Correlation[i]);
         }
         #endregion
     }
