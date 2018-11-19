@@ -12,6 +12,8 @@ namespace DynamicSeries_lab2
         public DynamicSeries SeriesAfterSmoothing { get; set; }
         public LinearRegression LinearRegression { get; set; }
         public NotLinearRegression NotLinearRegression { get; set; }
+        public SeriesQuality QualityIndicatorsLinearTrend { get; set; }
+        public SeriesQuality QualityIndicatorsNotLinearTrend { get; set; }
 
         public Form1()
         {
@@ -75,6 +77,17 @@ namespace DynamicSeries_lab2
             FillNotLinearRegressionChart(rbWithSmoothing.Checked);
             tbNotLinearA0.Text = NotLinearRegression.A0.ToString();
             tbNotLinearA1.Text = NotLinearRegression.A1.ToString();*/
+
+            CountQuality(rbWithSmoothing.Checked);
+            tbLinearTrendF.Text =
+                $"{QualityIndicatorsLinearTrend.FTest}, {QualityIndicatorsLinearTrend.IsAdequate(Series.AmountOfElements)}";
+            tbLinearTrendR2.Text =
+                $"{QualityIndicatorsLinearTrend.R2}, {QualityIndicatorsLinearTrend.IsSignificant(Series.AmountOfElements)}";
+
+            /*tbNotLinearTrendF.Text =
+                $"{QualityIndicatorsNotLinearTrend.FTest}, {QualityIndicatorsNotLinearTrend.IsAdequate(Series.AmountOfElements)}";
+            tbNotLinearTrendR2.Text =
+                $"{QualityIndicatorsNotLinearTrend.R2}, {QualityIndicatorsNotLinearTrend.IsSignificant(Series.AmountOfElements)}";*/
         }
 
         private void rbWithoutSmoothing_Click(object sender, EventArgs e)
@@ -134,6 +147,26 @@ namespace DynamicSeries_lab2
 
             for (int i = 0; i < Series.AmountOfElements; i++)
                 chNotLinear.Series[1].Points.AddXY(Series.Index[i], NotLinearRegression.A0 + NotLinearRegression.A1 * (i + 1));
+        }
+        #endregion
+
+        #region Quality
+        private void CountQuality(bool withSmoothing)
+        {
+            if (withSmoothing)
+            {
+                QualityIndicatorsLinearTrend =
+                    new SeriesQuality(SeriesAfterSmoothing.Value, LinearRegression.A0, LinearRegression.A1);
+                /*QualityIndicatorsNotLinearTrend = new SeriesQuality(SeriesAfterSmoothing.Value, NotLinearRegression.A0,
+                    NotLinearRegression.A1);*/
+            }
+            else
+            {
+                QualityIndicatorsLinearTrend =
+                    new SeriesQuality(Series.Value, LinearRegression.A0, LinearRegression.A1);
+                /*QualityIndicatorsNotLinearTrend = new SeriesQuality(Series.Value, NotLinearRegression.A0,
+                    NotLinearRegression.A1);*/
+            }
         }
         #endregion
     }

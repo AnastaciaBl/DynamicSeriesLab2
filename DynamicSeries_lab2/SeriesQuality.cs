@@ -13,6 +13,7 @@ namespace DynamicSeries_lab2
         private double MSE { get; set; }
         public const int AmountOfRegressionParameters = 2;
         public double FTest { get; set; }
+        public double R2 { get; set; }
 
         public SeriesQuality(List<double> series, double a0Cof, double a1Cof)
         {
@@ -23,6 +24,7 @@ namespace DynamicSeries_lab2
             FindMSR();
             FindMSE(series.Count);
             CountFTestValue(series.Count);
+            FindR2();
         }
 
         private void FindAverage(List<double> series)
@@ -50,7 +52,7 @@ namespace DynamicSeries_lab2
         }
         private void FindSST()
         {
-            SST = SSR + SST;
+            SST = SSR + SSE;
         }
 
         private void FindMSR()
@@ -65,7 +67,7 @@ namespace DynamicSeries_lab2
 
         private void CountFTestValue(int amountOfElements)
         {
-            FTest = MSR * (amountOfElements - AmountOfRegressionParameters) / MSE * (AmountOfRegressionParameters - 1);
+            FTest = Math.Round(MSR * (amountOfElements - AmountOfRegressionParameters) / MSE * (AmountOfRegressionParameters - 1), 4);
         }
 
         private double CountQuantileFishera(int v1, int v2)
@@ -73,9 +75,30 @@ namespace DynamicSeries_lab2
             return 0;
         }
 
-        public bool IsAdequate()
+        private double CountQuantileStudenta(int v1)
         {
-            return true;
+            return 0;
+        }
+
+        public string IsAdequate(int amountOfElementsInSeries)
+        {
+            return FTest > CountQuantileFishera(AmountOfRegressionParameters - 1,
+                       amountOfElementsInSeries - AmountOfRegressionParameters)
+                ? "адекватная"
+                : "неадекватная";
+        }
+
+        private void FindR2()
+        {
+            R2 = Math.Round(SSR / SST, 4);
+        }
+
+        public string IsSignificant(int amountOfElementsInSeries)
+        {
+            double t = Math.Sqrt(R2) * Math.Sqrt(amountOfElementsInSeries - 2) / Math.Sqrt(1 - R2);
+            return Math.Abs(t) > CountQuantileStudenta(amountOfElementsInSeries - 2)
+                ? "значимая"
+                : "не значимая";
         }
     }
 }

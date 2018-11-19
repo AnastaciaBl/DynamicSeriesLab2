@@ -63,6 +63,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tbNotLinearA1 = new System.Windows.Forms.TextBox();
             this.tbNotLinearA0 = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbLinearTrendR2 = new System.Windows.Forms.TextBox();
+            this.tbLinearTrendF = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbNotLinearTrendR2 = new System.Windows.Forms.TextBox();
+            this.tbNotLinearTrendF = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chSmoothing)).BeginInit();
@@ -74,6 +84,8 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chNotLinear)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOpenFile
@@ -159,6 +171,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.chLinearTrend);
             this.tabPage2.Controls.Add(this.groupBox1);
@@ -176,9 +189,9 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.tbA1);
             this.groupBox2.Controls.Add(this.tbA0);
-            this.groupBox2.Location = new System.Drawing.Point(433, 157);
+            this.groupBox2.Location = new System.Drawing.Point(433, 105);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(250, 104);
+            this.groupBox2.Size = new System.Drawing.Size(250, 79);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Linear coefficients";
@@ -186,7 +199,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 63);
+            this.label3.Location = new System.Drawing.Point(13, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 13);
             this.label3.TabIndex = 3;
@@ -195,7 +208,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 37);
+            this.label2.Location = new System.Drawing.Point(13, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(23, 13);
             this.label2.TabIndex = 2;
@@ -203,14 +216,14 @@
             // 
             // tbA1
             // 
-            this.tbA1.Location = new System.Drawing.Point(53, 60);
+            this.tbA1.Location = new System.Drawing.Point(52, 45);
             this.tbA1.Name = "tbA1";
             this.tbA1.Size = new System.Drawing.Size(182, 20);
             this.tbA1.TabIndex = 1;
             // 
             // tbA0
             // 
-            this.tbA0.Location = new System.Drawing.Point(53, 34);
+            this.tbA0.Location = new System.Drawing.Point(52, 19);
             this.tbA0.Name = "tbA0";
             this.tbA0.Size = new System.Drawing.Size(182, 20);
             this.tbA0.TabIndex = 0;
@@ -242,7 +255,7 @@
             this.groupBox1.Controls.Add(this.rbWithSmoothing);
             this.groupBox1.Location = new System.Drawing.Point(433, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(251, 136);
+            this.groupBox1.Size = new System.Drawing.Size(251, 84);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Choose series";
@@ -251,7 +264,7 @@
             // 
             this.rbWithoutSmoothing.AutoSize = true;
             this.rbWithoutSmoothing.Checked = true;
-            this.rbWithoutSmoothing.Location = new System.Drawing.Point(17, 51);
+            this.rbWithoutSmoothing.Location = new System.Drawing.Point(6, 42);
             this.rbWithoutSmoothing.Name = "rbWithoutSmoothing";
             this.rbWithoutSmoothing.Size = new System.Drawing.Size(110, 17);
             this.rbWithoutSmoothing.TabIndex = 1;
@@ -262,9 +275,9 @@
             // 
             // btnCount
             // 
-            this.btnCount.Location = new System.Drawing.Point(17, 82);
+            this.btnCount.Location = new System.Drawing.Point(122, 19);
             this.btnCount.Name = "btnCount";
-            this.btnCount.Size = new System.Drawing.Size(218, 38);
+            this.btnCount.Size = new System.Drawing.Size(123, 40);
             this.btnCount.TabIndex = 2;
             this.btnCount.Text = "Count";
             this.btnCount.UseVisualStyleBackColor = true;
@@ -273,7 +286,7 @@
             // rbWithSmoothing
             // 
             this.rbWithSmoothing.AutoSize = true;
-            this.rbWithSmoothing.Location = new System.Drawing.Point(17, 28);
+            this.rbWithSmoothing.Location = new System.Drawing.Point(6, 19);
             this.rbWithSmoothing.Name = "rbWithSmoothing";
             this.rbWithSmoothing.Size = new System.Drawing.Size(95, 17);
             this.rbWithSmoothing.TabIndex = 0;
@@ -283,6 +296,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Controls.Add(this.chNotLinear);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -357,6 +371,96 @@
             this.tbNotLinearA0.Size = new System.Drawing.Size(182, 20);
             this.tbNotLinearA0.TabIndex = 0;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.tbLinearTrendR2);
+            this.groupBox4.Controls.Add(this.tbLinearTrendF);
+            this.groupBox4.Location = new System.Drawing.Point(433, 190);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(250, 79);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Quality";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "R2:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(16, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "F:";
+            // 
+            // tbLinearTrendR2
+            // 
+            this.tbLinearTrendR2.Location = new System.Drawing.Point(52, 45);
+            this.tbLinearTrendR2.Name = "tbLinearTrendR2";
+            this.tbLinearTrendR2.Size = new System.Drawing.Size(182, 20);
+            this.tbLinearTrendR2.TabIndex = 1;
+            // 
+            // tbLinearTrendF
+            // 
+            this.tbLinearTrendF.Location = new System.Drawing.Point(52, 19);
+            this.tbLinearTrendF.Name = "tbLinearTrendF";
+            this.tbLinearTrendF.Size = new System.Drawing.Size(182, 20);
+            this.tbLinearTrendF.TabIndex = 0;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Controls.Add(this.tbNotLinearTrendR2);
+            this.groupBox5.Controls.Add(this.tbNotLinearTrendF);
+            this.groupBox5.Location = new System.Drawing.Point(434, 127);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(250, 99);
+            this.groupBox5.TabIndex = 7;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Quality";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 57);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(24, 13);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "R2:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(14, 31);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(16, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "F:";
+            // 
+            // tbNotLinearTrendR2
+            // 
+            this.tbNotLinearTrendR2.Location = new System.Drawing.Point(53, 54);
+            this.tbNotLinearTrendR2.Name = "tbNotLinearTrendR2";
+            this.tbNotLinearTrendR2.Size = new System.Drawing.Size(182, 20);
+            this.tbNotLinearTrendR2.TabIndex = 1;
+            // 
+            // tbNotLinearTrendF
+            // 
+            this.tbNotLinearTrendF.Location = new System.Drawing.Point(53, 28);
+            this.tbNotLinearTrendF.Name = "tbNotLinearTrendF";
+            this.tbNotLinearTrendF.Size = new System.Drawing.Size(182, 20);
+            this.tbNotLinearTrendF.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,6 +484,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.chNotLinear)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -411,6 +519,16 @@
         private System.Windows.Forms.TextBox tbNotLinearA1;
         private System.Windows.Forms.TextBox tbNotLinearA0;
         private System.Windows.Forms.DataVisualization.Charting.Chart chNotLinear;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbLinearTrendR2;
+        private System.Windows.Forms.TextBox tbLinearTrendF;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbNotLinearTrendR2;
+        private System.Windows.Forms.TextBox tbNotLinearTrendF;
     }
 }
 
