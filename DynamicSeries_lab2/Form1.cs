@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace DynamicSeries_lab2
 {
@@ -10,6 +9,7 @@ namespace DynamicSeries_lab2
     {
         public DynamicSeries Series { get; set; }
         public DynamicSeries SeriesAfterSmoothing { get; set; }
+        public DynamicSeries SeriesAfterExponentialSmoothing { get; set; }
         public LinearRegression LinearRegression { get; set; }
         public NotLinearRegression NotLinearRegression { get; set; }
         public SeriesQuality QualityIndicatorsLinearTrend { get; set; }
@@ -39,6 +39,7 @@ namespace DynamicSeries_lab2
                         }
                         Series = new DynamicSeries(fields, data);
                         SeriesAfterSmoothing = MovingAverage.SmoothOverDynamicSeries(Series, Convert.ToInt32(tbWindow.Text));
+                        SeriesAfterExponentialSmoothing = ExponentialSmoothing.SmoothOverDynamicSeries(Series);
                         FillNormalChart();
                         FillSmoothingChart();
                     }                    
@@ -57,10 +58,13 @@ namespace DynamicSeries_lab2
 
         private void FillSmoothingChart()
         {
-            chSmoothing.Series[0].Points.Clear();
+            chSmoothing.Series[0].Points.Clear(); //moving average
+            chSmoothing.Series[1].Points.Clear(); //exponential
             for (int i = 0; i < SeriesAfterSmoothing.AmountOfElements; i++)
             {
                 chSmoothing.Series[0].Points.AddXY(SeriesAfterSmoothing.Index[i], SeriesAfterSmoothing.Value[i]);
+                chSmoothing.Series[1].Points.AddXY(SeriesAfterExponentialSmoothing.Index[i],
+                    SeriesAfterExponentialSmoothing.Value[i]);
             }
         }
         #endregion
