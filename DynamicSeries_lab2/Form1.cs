@@ -38,10 +38,12 @@ namespace DynamicSeries_lab2
                             data.Add(reader.ReadLine());
                         }
                         Series = new DynamicSeries(fields, data);
-                        SeriesAfterSmoothing = MovingAverage.SmoothOverDynamicSeries(Series, Convert.ToInt32(tbWindow.Text));
+                        int period = Convert.ToInt32(tbWindow.Text);
+                        SeriesAfterSmoothing = MovingAverage.SmoothOverDynamicSeries(Series, period);
                         SeriesAfterExponentialSmoothing = ExponentialSmoothing.SmoothOverDynamicSeries(Series);
                         FillNormalChart();
                         FillSmoothingChart();
+                        FillFourierChart(period);
                     }                    
                 }
             }
@@ -179,12 +181,26 @@ namespace DynamicSeries_lab2
         #region WithoutTrend
         private void FillCorrelogramaChart(bool withSmoothing)
         {
-            chCorrelogram.Series[0].Points.Clear();
+            chFourier.Series[0].Points.Clear();
             var series = withSmoothing ? SeriesAfterSmoothing.Value : Series.Value;
             var correlogramData = new AnalyzerForSeriesWithoutTrend(series);
             if(correlogramData.WithoutTrend)
                 for (int i = 0; i < correlogramData.Correlation.Count; i++)
-                    chCorrelogram.Series[0].Points.AddXY(i + 1, correlogramData.Correlation[i]);
+                    chFourier.Series[0].Points.AddXY(i + 1, correlogramData.Correlation[i]);
+        }
+        #endregion
+
+        #region Fourier
+        private void FillFourierChart(int period)
+        {
+            chFourier.Series[0].Points.Clear();
+            chFourier.Series[1].Points.Clear();
+            var fourier = new Fourier(SeriesAfterSmoothing, period);
+            for (int i = 0; i < Series.AmountOfElements; i++)
+            {
+                chFourier.Series[0].Points.AddXY(SeriesAfterSmoothing.Index[i], SeriesAfterSmoothing.Value[i]);
+                chFourier.Series[1].Points.AddXY(SeriesAfterSmoothing.Index[i], fourier.Y[i]);
+            }
         }
         #endregion
     }

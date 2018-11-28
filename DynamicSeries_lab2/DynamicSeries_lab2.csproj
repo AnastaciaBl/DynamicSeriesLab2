@@ -56,6 +56,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fourier.cs" />
     <Compile Include="LinearRegression.cs" />
     <Compile Include="MovingAverage.cs" />
     <Compile Include="NotLinearRegression.cs" />

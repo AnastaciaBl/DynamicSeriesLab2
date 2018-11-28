@@ -41,6 +41,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.tbWindow = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -77,7 +78,7 @@
             this.tbNotLinearA0 = new System.Windows.Forms.TextBox();
             this.chNotLinear = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.chCorrelogram = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chFourier = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chSmoothing)).BeginInit();
@@ -92,7 +93,7 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chNotLinear)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chCorrelogram)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chFourier)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOpenFile
@@ -482,27 +483,34 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.chCorrelogram);
+            this.tabPage4.Controls.Add(this.chFourier);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(691, 354);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "WithoutTrend";
+            this.tabPage4.Text = "Fourier";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // chCorrelogram
+            // chFourier
             // 
             chartArea5.Name = "ChartArea1";
-            this.chCorrelogram.ChartAreas.Add(chartArea5);
-            this.chCorrelogram.Location = new System.Drawing.Point(3, 3);
-            this.chCorrelogram.Name = "chCorrelogram";
+            this.chFourier.ChartAreas.Add(chartArea5);
+            this.chFourier.Location = new System.Drawing.Point(3, 3);
+            this.chFourier.Name = "chFourier";
+            series8.BorderWidth = 2;
             series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series8.CustomProperties = "PointWidth=1";
             series8.Name = "Series1";
-            this.chCorrelogram.Series.Add(series8);
-            this.chCorrelogram.Size = new System.Drawing.Size(685, 345);
-            this.chCorrelogram.TabIndex = 4;
-            this.chCorrelogram.Text = "chart1";
+            series9.BorderWidth = 2;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series9.Name = "Series2";
+            this.chFourier.Series.Add(series8);
+            this.chFourier.Series.Add(series9);
+            this.chFourier.Size = new System.Drawing.Size(685, 345);
+            this.chFourier.TabIndex = 4;
+            this.chFourier.Text = "chart1";
             // 
             // Form1
             // 
@@ -532,7 +540,7 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chNotLinear)).EndInit();
             this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chCorrelogram)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chFourier)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -575,7 +583,7 @@
         private System.Windows.Forms.TextBox tbNotLinearTrendR2;
         private System.Windows.Forms.TextBox tbNotLinearTrendF;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chCorrelogram;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chFourier;
     }
 }
 
