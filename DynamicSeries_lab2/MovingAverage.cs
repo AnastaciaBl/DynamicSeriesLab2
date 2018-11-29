@@ -16,7 +16,7 @@ namespace DynamicSeries_lab2
                 var smoothing = FindSmoothingOnLastElements(amountOfLastElements, series.Value, window);
                 AddLastElements(newValues, smoothing, amountOfLastElements);
             }            
-            return new DynamicSeries(newValues, series.Index);
+            return new DynamicSeries(newValues, series.Index, series.Window);
         }
 
         private static double[] FindAverageOfIntervals(int amountOfIntervals, int window, List<double> values)

@@ -43,7 +43,7 @@ namespace DynamicSeries_lab2
                         SeriesAfterExponentialSmoothing = ExponentialSmoothing.SmoothOverDynamicSeries(Series);
                         FillNormalChart();
                         FillSmoothingChart();
-                        FillFourierChart(period);
+                        FillFourierChart(Series.Window);
                     }                    
                 }
             }

@@ -8,6 +8,7 @@ namespace DynamicSeries_lab2
         public List<string> Index { get; private set; }
         public List<double> Value { get; private set; }
         public readonly int AmountOfElements;
+        public int Window { get; private set; }
 
         public DynamicSeries()
         {
@@ -19,13 +20,15 @@ namespace DynamicSeries_lab2
         {
             FillData(data);
             AmountOfElements = data.Count;
+            FindWindow();
         }
 
-        public DynamicSeries(List<double> values, List<string> index) : this()
+        public DynamicSeries(List<double> values, List<string> index, int period) : this()
         {
             values.ForEach(v => Value.Add(v));
             index.ForEach(i => Index.Add(i));
             AmountOfElements = values.Count;
+            Window = period;
         }
 
         private void FillData(List<string> data)
@@ -41,6 +44,47 @@ namespace DynamicSeries_lab2
                 }
                 catch
                 { }
+            }
+        }
+
+        private void FindWindow()
+        {
+            int index = 0;
+            if (Value[0] < Value[1])
+            {
+                while (Value[index]<Value[index+1])
+                {
+                    index++;
+                }
+                Window = index;
+                while (Value[index]>Value[index+1])
+                {
+                    index++;
+                }
+                while (Value[index] < Value[index + 1])
+                {
+                    index++;
+                }
+
+                Window = index - Window;
+            }
+            else
+            {
+                while (Value[index] > Value[index + 1])
+                {
+                    index++;
+                }
+                Window = index;
+                while (Value[index] < Value[index + 1])
+                {
+                    index++;
+                }
+                while (Value[index] > Value[index + 1])
+                {
+                    index++;
+                }
+
+                Window = index - Window;
             }
         }
     }

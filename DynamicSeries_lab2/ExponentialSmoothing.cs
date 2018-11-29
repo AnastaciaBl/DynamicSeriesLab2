@@ -16,7 +16,7 @@ namespace DynamicSeries_lab2
                 double s = sList[i - 1] + Al * (series.Value[i] - sList[i - 1]);
                 sList.Add(s);
             }
-            return new DynamicSeries(sList, series.Index);
+            return new DynamicSeries(sList, series.Index, series.Window);
         }
     }
 }
