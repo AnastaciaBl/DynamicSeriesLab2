@@ -39,11 +39,11 @@ namespace DynamicSeries_lab2
                         }
                         Series = new DynamicSeries(fields, data);
                         int period = Convert.ToInt32(tbWindow.Text);
-                        SeriesAfterSmoothing = MovingAverage.SmoothOverDynamicSeries(Series, period);
+                        SeriesAfterSmoothing = MovingAverage.SmoothOverDynamicSeries(Series);
                         SeriesAfterExponentialSmoothing = ExponentialSmoothing.SmoothOverDynamicSeries(Series);
                         FillNormalChart();
                         FillSmoothingChart();
-                        FillFourierChart(Series.Window);
+                        FillFourierChart(period);
                     }                    
                 }
             }
@@ -194,12 +194,10 @@ namespace DynamicSeries_lab2
         private void FillFourierChart(int period)
         {
             chFourier.Series[0].Points.Clear();
-            chFourier.Series[1].Points.Clear();
             var fourier = new Fourier(SeriesAfterSmoothing, period);
             for (int i = 0; i < Series.AmountOfElements; i++)
             {
-                chFourier.Series[0].Points.AddXY(SeriesAfterSmoothing.Index[i], SeriesAfterSmoothing.Value[i]);
-                chFourier.Series[1].Points.AddXY(SeriesAfterSmoothing.Index[i], fourier.Y[i]);
+                chFourier.Series[0].Points.AddXY(SeriesAfterSmoothing.Index[i], fourier.Y[i]);
             }
         }
         #endregion

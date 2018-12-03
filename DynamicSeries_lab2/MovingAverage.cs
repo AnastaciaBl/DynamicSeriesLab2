@@ -1,81 +1,85 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace DynamicSeries_lab2
 {
     public static class MovingAverage
     {
-        public static DynamicSeries SmoothOverDynamicSeries(DynamicSeries series, int window)
+        private const int Period = 7;
+        private static DynamicSeries Series { get; set; }
+
+        public static DynamicSeries SmoothOverDynamicSeries(DynamicSeries series)
         {
-            int amountOfIntervals = series.AmountOfElements / window;
-            int amountOfLastElements = series.AmountOfElements - amountOfIntervals * window;
-            var averages = FindAverageOfIntervals(amountOfIntervals, window, series.Value);
-            var newValues = CreateNewAverageValues(averages, series.AmountOfElements, window);
-            if (amountOfLastElements != 0)
-            {
-                var smoothing = FindSmoothingOnLastElements(amountOfLastElements, series.Value, window);
-                AddLastElements(newValues, smoothing, amountOfLastElements);
-            }            
+            Series = series;
+            var newValues = new List<double>();
+            AddFirstThreeValues(newValues, 0);
+            AddMiddleValues(newValues, 3 * Period, Series.AmountOfElements - 3 * Period);
+            AddLastThreeValues(newValues, Series.AmountOfElements - 3 * Period);
             return new DynamicSeries(newValues, series.Index, series.Window);
         }
 
-        private static double[] FindAverageOfIntervals(int amountOfIntervals, int window, List<double> values)
+        private static void AddFirstThreeValues(List<double> list, int startIndex)
         {
-            var averages = new double[amountOfIntervals];
-            int index = 0;
-            for (int i = 0; i < amountOfIntervals; i++)
+            double u1 = (1.0 / 126) * (117 * Series.Value[startIndex] + 24 * Series.Value[startIndex + 1] -
+                                       12 * Series.Value[startIndex + 2] - 12 * Series.Value[startIndex + 3] +
+                                       3 * Series.Value[startIndex + 4] + 12 * Series.Value[startIndex + 5] -
+                                       6 * Series.Value[startIndex + 6]);
+            startIndex += Period;
+            double u2 = (1.0 / 126) * (24 * Series.Value[startIndex] + 57 * Series.Value[startIndex + 1] +
+                                       48 * Series.Value[startIndex + 2] + 18 * Series.Value[startIndex + 3] -
+                                       12 * Series.Value[startIndex + 4] - 21 * Series.Value[startIndex + 5] +
+                                       12 * Series.Value[startIndex + 6]);
+            startIndex += Period;
+            double u3 = (1.0 / 126) * (-12 * Series.Value[startIndex] + 48 * Series.Value[startIndex + 1] +
+                                       57 * Series.Value[startIndex + 2] + 36 * Series.Value[startIndex + 3] +
+                                       6 * Series.Value[startIndex + 4] - 12 * Series.Value[startIndex + 5] +
+                                       3 * Series.Value[startIndex + 6]);
+            AddValues(list, u1);
+            AddValues(list, u2);
+            AddValues(list, u3);
+        }
+
+        private static void AddLastThreeValues(List<double> list, int startIndex)
+        {
+            double u1 = (1.0 / 42) * (1 * Series.Value[startIndex] - 4 * Series.Value[startIndex + 1] +
+                                       2 * Series.Value[startIndex + 2] + 12 * Series.Value[startIndex + 3] +
+                                       19 * Series.Value[startIndex + 4] + 16 * Series.Value[startIndex + 5] -
+                                       4 * Series.Value[startIndex + 6]);
+            startIndex += Period;
+            double u2 = (1.0 / 42) * (4 * Series.Value[startIndex] - 7 * Series.Value[startIndex + 1] -
+                                       4 * Series.Value[startIndex + 2] + 6 * Series.Value[startIndex + 3] +
+                                       16 * Series.Value[startIndex + 4] + 19 * Series.Value[startIndex + 5] +
+                                       8 * Series.Value[startIndex + 6]);
+            startIndex += Period;
+            double u3 = (1.0 / 42) * (-2 * Series.Value[startIndex] + 4 * Series.Value[startIndex + 1] +
+                                       1 * Series.Value[startIndex + 2] - 4 * Series.Value[startIndex + 3] -
+                                       4 * Series.Value[startIndex + 4] + 8 * Series.Value[startIndex + 5] +
+                                       39 * Series.Value[startIndex + 6]);
+            AddValues(list, u1);
+            AddValues(list, u2);
+            AddValues(list, u3);
+        }
+
+        private static void AddMiddleValues(List<double> list, int startIndex, int endIndex)
+        {
+            int amountOfLevels = (endIndex - startIndex) / Period;
+            for(int i=0;i<amountOfLevels;i++)
             {
-                int counter = 0;
-                var elementsInInterval = new List<double>();
-                while(counter < window)
-                {
-                    elementsInInterval.Add(values[index]);
-                    index++;
-                    counter++;
-                }
-                averages[i] = CountAverage(elementsInInterval, window);
+                double u = (1.0 / 21) * (-2 * Series.Value[startIndex] + 3 * Series.Value[startIndex + 1] +
+                                          6 * Series.Value[startIndex + 2] + 7 * Series.Value[startIndex + 3] +
+                                          6 * Series.Value[startIndex + 4] + 3 * Series.Value[startIndex + 5] -
+                                          2 * Series.Value[startIndex + 6]);
+                AddValues(list, u);
+                startIndex += Period;
             }
-            return averages;
+
+            for (; startIndex < endIndex; startIndex++)
+                list.Add(Series.Value[startIndex]);
         }
 
-        private static double FindSmoothingOnLastElements(int amountOfLastElements, List<double> values, int window)
+        private static void AddValues(List<double> list, double value)
         {
-            double smoothing = (values[values.Count - 1] - values[values.Count - amountOfLastElements]) / (window - 1);
-            return smoothing;
-        }
-
-        private static double CountAverage(List<double> elements, int window)
-        {
-            double average = 0;
-            elements.ForEach(e => average += e);
-            average = average / window;
-            return average;
-        }
-
-        private static List<double> CreateNewAverageValues(double[] averages, int amountOfElements, int window)
-        {
-            var newValues = new List<double>();
-            int index = 0;
-            for (int i = 0; i < averages.Length; i++)
-            {
-                int counter = 0;
-                while(counter < window && index != amountOfElements)
-                {
-                    newValues.Add(averages[i]);
-                    index++;
-                    counter++;
-                }
-            }
-            return newValues;
-        }
-
-        private static void AddLastElements(List<double> values, double smoothing, int amountOfElements)
-        {
-            double valueOfLastElementInInterval = values.Last();
-            for (int i = 0; i < amountOfElements; i++)
-            {
-                values.Add(valueOfLastElementInInterval + smoothing);
-            }
+            for (int i = 0; i < Period; i++)
+                list.Add(value);
         }
     }
 }

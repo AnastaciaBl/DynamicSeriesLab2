@@ -41,7 +41,6 @@
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.tbWindow = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -112,7 +111,7 @@
             this.tbWindow.Name = "tbWindow";
             this.tbWindow.Size = new System.Drawing.Size(100, 20);
             this.tbWindow.TabIndex = 1;
-            this.tbWindow.Text = "3";
+            this.tbWindow.Text = "12";
             // 
             // label1
             // 
@@ -502,12 +501,7 @@
             series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series8.CustomProperties = "PointWidth=1";
             series8.Name = "Series1";
-            series9.BorderWidth = 2;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series9.Name = "Series2";
             this.chFourier.Series.Add(series8);
-            this.chFourier.Series.Add(series9);
             this.chFourier.Size = new System.Drawing.Size(685, 345);
             this.chFourier.TabIndex = 4;
             this.chFourier.Text = "chart1";
