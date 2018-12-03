@@ -71,10 +71,12 @@ namespace DynamicSeries_lab2
             tbA0.Text = Math.Round(LinearRegression.A0, 4).ToString();
             tbA1.Text = Math.Round(LinearRegression.A1, 4).ToString();
             //not linear trend
-            /*NotLinearRegression = new NotLinearRegression(LinearRegression.A0, LinearRegression.A1);
+            NotLinearRegression = rbWithSmoothing.Checked
+                ? new NotLinearRegression(LinearRegression.A0, LinearRegression.A1, SeriesAfterSmoothing)
+                : new NotLinearRegression(LinearRegression.A0, LinearRegression.A1, Series);
             FillNotLinearRegressionChart(rbWithSmoothing.Checked);
             tbNotLinearA0.Text = NotLinearRegression.A0.ToString();
-            tbNotLinearA1.Text = NotLinearRegression.A1.ToString();*/
+            tbNotLinearA1.Text = NotLinearRegression.A1.ToString();
 
             CountQuality(rbWithSmoothing.Checked);
             tbLinearTrendF.Text =
@@ -82,10 +84,10 @@ namespace DynamicSeries_lab2
             tbLinearTrendR2.Text =
                 $"{QualityIndicatorsLinearTrend.R2}, {QualityIndicatorsLinearTrend.IsSignificant(Series.AmountOfElements)}";
 
-            /*tbNotLinearTrendF.Text =
-                $"{QualityIndicatorsNotLinearTrend.FTest}, {QualityIndicatorsNotLinearTrend.IsAdequate(Series.AmountOfElements)}";
-            tbNotLinearTrendR2.Text =
-                $"{QualityIndicatorsNotLinearTrend.R2}, {QualityIndicatorsNotLinearTrend.IsSignificant(Series.AmountOfElements)}";*/
+            //tbNotLinearTrendF.Text =
+            //    $"{QualityIndicatorsNotLinearTrend.FTest}, {QualityIndicatorsNotLinearTrend.IsAdequate(Series.AmountOfElements)}";
+            //tbNotLinearTrendR2.Text =
+            //    $"{QualityIndicatorsNotLinearTrend.R2}, {QualityIndicatorsNotLinearTrend.IsSignificant(Series.AmountOfElements)}";
 
             FillCorrelogramaChart(rbWithSmoothing.Checked);
         }
@@ -144,9 +146,12 @@ namespace DynamicSeries_lab2
                 for (int i = 0; i < SeriesAfterSmoothing.AmountOfElements; i++)
                     chNotLinear.Series[0].Points.AddXY(Series.Index[i], Series.Value[i]);
             }
-
-            for (int i = 0; i < Series.AmountOfElements; i++)
-                chNotLinear.Series[1].Points.AddXY(Series.Index[i], NotLinearRegression.A0 + NotLinearRegression.A1 * (i + 1));
+            //Series.AmountOfElements
+            for (int i = 0; i < 10; i++)
+            {
+                double y = NotLinearRegression.Gamma * Math.Pow(NotLinearRegression.A0, Math.Pow(NotLinearRegression.A1, i + 1));
+                chNotLinear.Series[1].Points.AddXY(Series.Index[i], y);
+            }
         }
         #endregion
 

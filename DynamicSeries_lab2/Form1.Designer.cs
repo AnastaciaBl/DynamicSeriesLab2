@@ -460,13 +460,14 @@
             this.chNotLinear.ChartAreas.Add(chartArea3);
             this.chNotLinear.Location = new System.Drawing.Point(6, 6);
             this.chNotLinear.Name = "chNotLinear";
+            series6.BorderWidth = 2;
             series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series6.CustomProperties = "PointWidth=1";
             series6.Name = "Series1";
-            series7.BorderWidth = 3;
+            series7.BorderWidth = 2;
             series7.ChartArea = "ChartArea1";
             series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series7.CustomProperties = "LineTension=1";
             series7.Name = "Series2";
             this.chNotLinear.Series.Add(series6);
             this.chNotLinear.Series.Add(series7);
