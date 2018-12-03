@@ -29,24 +29,23 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.tbWindow = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.chSmoothing = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chNormal = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -80,7 +79,6 @@
             this.chFourier = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chSmoothing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chNormal)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -136,7 +134,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.chSmoothing);
             this.tabPage1.Controls.Add(this.chNormal);
             this.tabPage1.Controls.Add(this.btnOpenFile);
             this.tabPage1.Controls.Add(this.label1);
@@ -149,40 +146,37 @@
             this.tabPage1.Text = "Smoothing";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // chSmoothing
+            // chNormal
             // 
             chartArea1.Name = "ChartArea1";
-            this.chSmoothing.ChartAreas.Add(chartArea1);
-            this.chSmoothing.Location = new System.Drawing.Point(355, 36);
-            this.chSmoothing.Name = "chSmoothing";
-            series1.BorderWidth = 2;
+            this.chNormal.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chNormal.Legends.Add(legend1);
+            this.chNormal.Location = new System.Drawing.Point(6, 37);
+            this.chNormal.Name = "chNormal";
+            series1.BorderWidth = 3;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.CustomProperties = "PointWidth=1";
+            series1.Legend = "Legend1";
+            series1.LegendText = "Series";
             series1.Name = "Series1";
             series2.BorderWidth = 2;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.LegendText = "Moving Average";
             series2.Name = "Series2";
-            this.chSmoothing.Series.Add(series1);
-            this.chSmoothing.Series.Add(series2);
-            this.chSmoothing.Size = new System.Drawing.Size(333, 311);
-            this.chSmoothing.TabIndex = 4;
-            this.chSmoothing.Text = "chart2";
-            // 
-            // chNormal
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chNormal.ChartAreas.Add(chartArea2);
-            this.chNormal.Location = new System.Drawing.Point(6, 37);
-            this.chNormal.Name = "chNormal";
             series3.BorderWidth = 2;
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.CustomProperties = "PointWidth=1";
-            series3.Name = "Series1";
+            series3.Legend = "Legend1";
+            series3.LegendText = "Exponential Sm.";
+            series3.Name = "Series3";
+            this.chNormal.Series.Add(series1);
+            this.chNormal.Series.Add(series2);
             this.chNormal.Series.Add(series3);
-            this.chNormal.Size = new System.Drawing.Size(343, 311);
+            this.chNormal.Size = new System.Drawing.Size(679, 311);
             this.chNormal.TabIndex = 3;
             this.chNormal.Text = "chart1";
             // 
@@ -292,8 +286,8 @@
             // 
             // chLinearTrend
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chLinearTrend.ChartAreas.Add(chartArea3);
+            chartArea2.Name = "ChartArea1";
+            this.chLinearTrend.ChartAreas.Add(chartArea2);
             this.chLinearTrend.Location = new System.Drawing.Point(6, 6);
             this.chLinearTrend.Name = "chLinearTrend";
             series4.BorderWidth = 2;
@@ -462,8 +456,8 @@
             // 
             // chNotLinear
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chNotLinear.ChartAreas.Add(chartArea4);
+            chartArea3.Name = "ChartArea1";
+            this.chNotLinear.ChartAreas.Add(chartArea3);
             this.chNotLinear.Location = new System.Drawing.Point(6, 6);
             this.chNotLinear.Name = "chNotLinear";
             series6.ChartArea = "ChartArea1";
@@ -492,8 +486,8 @@
             // 
             // chFourier
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chFourier.ChartAreas.Add(chartArea5);
+            chartArea4.Name = "ChartArea1";
+            this.chFourier.ChartAreas.Add(chartArea4);
             this.chFourier.Location = new System.Drawing.Point(3, 3);
             this.chFourier.Name = "chFourier";
             series8.BorderWidth = 2;
@@ -517,7 +511,6 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chSmoothing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chNormal)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -546,7 +539,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chSmoothing;
         private System.Windows.Forms.DataVisualization.Charting.Chart chNormal;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;

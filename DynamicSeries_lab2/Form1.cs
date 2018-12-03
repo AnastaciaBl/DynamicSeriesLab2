@@ -42,7 +42,6 @@ namespace DynamicSeries_lab2
                         SeriesAfterSmoothing = MovingAverage.SmoothOverDynamicSeries(Series);
                         SeriesAfterExponentialSmoothing = ExponentialSmoothing.SmoothOverDynamicSeries(Series);
                         FillNormalChart();
-                        FillSmoothingChart();
                         FillFourierChart(period);
                     }                    
                 }
@@ -52,20 +51,13 @@ namespace DynamicSeries_lab2
         private void FillNormalChart()
         {
             chNormal.Series[0].Points.Clear();
+            chNormal.Series[1].Points.Clear(); //moving average
+            chNormal.Series[2].Points.Clear(); //exponential
             for (int i = 0; i < Series.AmountOfElements; i++)
             {
                 chNormal.Series[0].Points.AddXY(Series.Index[i], Series.Value[i]);
-            }
-        }
-
-        private void FillSmoothingChart()
-        {
-            chSmoothing.Series[0].Points.Clear(); //moving average
-            chSmoothing.Series[1].Points.Clear(); //exponential
-            for (int i = 0; i < SeriesAfterSmoothing.AmountOfElements; i++)
-            {
-                chSmoothing.Series[0].Points.AddXY(SeriesAfterSmoothing.Index[i], SeriesAfterSmoothing.Value[i]);
-                chSmoothing.Series[1].Points.AddXY(SeriesAfterExponentialSmoothing.Index[i],
+                chNormal.Series[1].Points.AddXY(SeriesAfterSmoothing.Index[i], SeriesAfterSmoothing.Value[i]);
+                chNormal.Series[2].Points.AddXY(SeriesAfterExponentialSmoothing.Index[i],
                     SeriesAfterExponentialSmoothing.Value[i]);
             }
         }
