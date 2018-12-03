@@ -14,12 +14,20 @@ namespace DynamicSeries_lab2
         public const int AmountOfRegressionParameters = 2;
         public double FTest { get; set; }
         public double R2 { get; set; }
+        private bool IsLinear { get; }
+        private double A0 { get; }
+        private double A1 { get; }
+        private double Gamma { get; }
 
-        public SeriesQuality(List<double> series, double a0Cof, double a1Cof)
+        public SeriesQuality(List<double> series, double a0Cof, double a1Cof, bool isLinear, double gamma)
         {
+            IsLinear = isLinear;
+            A0 = a0Cof;
+            A1 = a1Cof;
+            Gamma = gamma;
             FindAverage(series);
-            FindSSR(series, a0Cof, a1Cof);
-            FindSSE(series, a0Cof, a1Cof);
+            FindSSR(series);
+            FindSSE(series);
             FindSST();
             FindMSR();
             FindMSE(series.Count);
@@ -34,21 +42,22 @@ namespace DynamicSeries_lab2
             Average = sum / series.Count;
         }
 
-        private double FindElementOfSeriesUsingRegression(double a0Cof, double a1Cof, int x)
+        private double FindElementOfSeriesUsingRegression(int x)
         {
-            return a0Cof + a1Cof * x;
+            double result = IsLinear ? (A0 + A1 * x) : (Gamma * Math.Pow(A0, Math.Pow(A1, x)));
+            return result;
         }
 
-        private void FindSSR(List<double> series, double a0Cof, double a1Cof)
+        private void FindSSR(List<double> series)
         {
             for (int i = 0; i < series.Count; i++)
-                SSR += Math.Pow(FindElementOfSeriesUsingRegression(a0Cof, a1Cof, i + 1) - Average, 2);
+                SSR += Math.Pow(FindElementOfSeriesUsingRegression(i + 1) - Average, 2);
         }
 
-        private void FindSSE(List<double> series, double a0Cof, double a1Cof)
+        private void FindSSE(List<double> series)
         {
             for (int i = 0; i < series.Count; i++)
-                SSE += Math.Pow(series[i] - FindElementOfSeriesUsingRegression(a0Cof, a1Cof, i + 1), 2);
+                SSE += Math.Pow(series[i] - FindElementOfSeriesUsingRegression(i + 1), 2);
         }
         private void FindSST()
         {

@@ -161,16 +161,16 @@ namespace DynamicSeries_lab2
             if (withSmoothing)
             {
                 QualityIndicatorsLinearTrend =
-                    new SeriesQuality(SeriesAfterSmoothing.Value, LinearRegression.A0, LinearRegression.A1);
-                /*QualityIndicatorsNotLinearTrend = new SeriesQuality(SeriesAfterSmoothing.Value, NotLinearRegression.A0,
-                    NotLinearRegression.A1);*/
+                    new SeriesQuality(SeriesAfterSmoothing.Value, LinearRegression.A0, LinearRegression.A1, true, 0);
+                //QualityIndicatorsNotLinearTrend = new SeriesQuality(SeriesAfterSmoothing.Value, NotLinearRegression.A0,
+                //    NotLinearRegression.A1, false, NotLinearRegression.Gamma);
             }
             else
             {
                 QualityIndicatorsLinearTrend =
-                    new SeriesQuality(Series.Value, LinearRegression.A0, LinearRegression.A1);
+                    new SeriesQuality(Series.Value, LinearRegression.A0, LinearRegression.A1, true, 0);
                 /*QualityIndicatorsNotLinearTrend = new SeriesQuality(Series.Value, NotLinearRegression.A0,
-                    NotLinearRegression.A1);*/
+                    NotLinearRegression.A1, false, NotLinearRegression.Gamma);*/
             }
         }
         #endregion
