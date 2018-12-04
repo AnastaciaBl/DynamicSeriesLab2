@@ -4,41 +4,54 @@ using System.Linq;
 
 namespace DynamicSeries_lab2
 {
-    class Fourier
+    public class Fourier
     {
         private DynamicSeries Series { get; }
         private int Period { get; }
         public List<double> Y { get; }
         public int K { get; } = 4;
+        public double A0 { get; private set; }
+        public List<double> Ak { get; }
+        public List<double> Bk { get; }
 
         public Fourier(DynamicSeries series, int period)
         {
             Series = series;
             Period = period;
             Y = new List<double>();
+            Ak = new List<double>();
+            Bk = new List<double>();
+            CountCoefs();
             FillYList();
+        }
+
+        private void CountCoefs()
+        {
+            A0 = CountA0();
+            for (int i = 1; i <= K; i++)
+            {
+                Ak.Add(CountAk(i));
+                Bk.Add(CountBk(i));
+            }
         }
 
         private void FillYList()
         {
-            double A0 = CountA0();
             for (int i = 0; i < Series.AmountOfElements; i++)
             {
-                CountNewY(i + 1, A0);
+                Y.Add(CountNewY(i + 1));
             }
         }
 
-        private void CountNewY(int index, double a0)
+        public double CountNewY(int index)
         {
             double sum = 0;
             for (int i = 1; i <= K; i++)
             {
-                double aK = CountAk(i);
-                double bK = CountBk(i);
-                sum += aK * Math.Cos(index * ((2 * Math.PI * i) / Period)) +
-                       bK * Math.Sin(index * ((2 * Math.PI * i) / Period));
+                sum += Ak[i - 1] * Math.Cos(index * ((2 * Math.PI * i) / Period)) +
+                       Bk[i - 1] * Math.Sin(index * ((2 * Math.PI * i) / Period));
             }
-            Y.Add(a0 + sum);
+            return A0 + sum;
         }
 
         private double CountA0()

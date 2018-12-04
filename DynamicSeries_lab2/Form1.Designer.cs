@@ -28,19 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea17 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series33 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series34 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series35 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series36 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series37 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea19 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series38 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series39 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea20 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series40 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series31 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series32 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.tbWindow = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -77,6 +80,15 @@
             this.chNotLinear = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.chFourier = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tbAmountOfSteps = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.chPrediction = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.dgPrediction = new System.Windows.Forms.DataGridView();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.rbLinearPrediction = new System.Windows.Forms.RadioButton();
+            this.rbNotLinearPrediction = new System.Windows.Forms.RadioButton();
+            this.btnPrediction = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chNormal)).BeginInit();
@@ -91,6 +103,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.chNotLinear)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chFourier)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chPrediction)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPrediction)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOpenFile
@@ -126,6 +142,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(2, 1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -148,34 +165,34 @@
             // 
             // chNormal
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chNormal.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chNormal.Legends.Add(legend1);
+            chartArea17.Name = "ChartArea1";
+            this.chNormal.ChartAreas.Add(chartArea17);
+            legend4.Name = "Legend1";
+            this.chNormal.Legends.Add(legend4);
             this.chNormal.Location = new System.Drawing.Point(6, 37);
             this.chNormal.Name = "chNormal";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.CustomProperties = "PointWidth=1";
-            series1.Legend = "Legend1";
-            series1.LegendText = "Series";
-            series1.Name = "Series1";
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.LegendText = "Moving Average";
-            series2.Name = "Series2";
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.LegendText = "Exponential Sm.";
-            series3.Name = "Series3";
-            this.chNormal.Series.Add(series1);
-            this.chNormal.Series.Add(series2);
-            this.chNormal.Series.Add(series3);
+            series33.BorderWidth = 3;
+            series33.ChartArea = "ChartArea1";
+            series33.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series33.CustomProperties = "PointWidth=1";
+            series33.Legend = "Legend1";
+            series33.LegendText = "Series";
+            series33.Name = "Series1";
+            series34.BorderWidth = 2;
+            series34.ChartArea = "ChartArea1";
+            series34.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series34.Legend = "Legend1";
+            series34.LegendText = "Moving Average";
+            series34.Name = "Series2";
+            series35.BorderWidth = 2;
+            series35.ChartArea = "ChartArea1";
+            series35.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series35.Legend = "Legend1";
+            series35.LegendText = "Exponential Sm.";
+            series35.Name = "Series3";
+            this.chNormal.Series.Add(series33);
+            this.chNormal.Series.Add(series34);
+            this.chNormal.Series.Add(series35);
             this.chNormal.Size = new System.Drawing.Size(679, 311);
             this.chNormal.TabIndex = 3;
             this.chNormal.Text = "chart1";
@@ -286,22 +303,22 @@
             // 
             // chLinearTrend
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chLinearTrend.ChartAreas.Add(chartArea2);
+            chartArea18.Name = "ChartArea1";
+            this.chLinearTrend.ChartAreas.Add(chartArea18);
             this.chLinearTrend.Location = new System.Drawing.Point(6, 6);
             this.chLinearTrend.Name = "chLinearTrend";
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.CustomProperties = "PointWidth=1";
-            series4.Name = "Series1";
-            series5.BorderWidth = 3;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series5.CustomProperties = "LineTension=1";
-            series5.Name = "Series2";
-            this.chLinearTrend.Series.Add(series4);
-            this.chLinearTrend.Series.Add(series5);
+            series36.BorderWidth = 2;
+            series36.ChartArea = "ChartArea1";
+            series36.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series36.CustomProperties = "PointWidth=1";
+            series36.Name = "Series1";
+            series37.BorderWidth = 3;
+            series37.ChartArea = "ChartArea1";
+            series37.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series37.CustomProperties = "LineTension=1";
+            series37.Name = "Series2";
+            this.chLinearTrend.Series.Add(series36);
+            this.chLinearTrend.Series.Add(series37);
             this.chLinearTrend.Size = new System.Drawing.Size(422, 342);
             this.chLinearTrend.TabIndex = 4;
             this.chLinearTrend.Text = "chart1";
@@ -456,21 +473,21 @@
             // 
             // chNotLinear
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chNotLinear.ChartAreas.Add(chartArea3);
+            chartArea19.Name = "ChartArea1";
+            this.chNotLinear.ChartAreas.Add(chartArea19);
             this.chNotLinear.Location = new System.Drawing.Point(6, 6);
             this.chNotLinear.Name = "chNotLinear";
-            series6.BorderWidth = 2;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series6.CustomProperties = "PointWidth=1";
-            series6.Name = "Series1";
-            series7.BorderWidth = 2;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series7.Name = "Series2";
-            this.chNotLinear.Series.Add(series6);
-            this.chNotLinear.Series.Add(series7);
+            series38.BorderWidth = 2;
+            series38.ChartArea = "ChartArea1";
+            series38.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series38.CustomProperties = "PointWidth=1";
+            series38.Name = "Series1";
+            series39.BorderWidth = 2;
+            series39.ChartArea = "ChartArea1";
+            series39.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series39.Name = "Series2";
+            this.chNotLinear.Series.Add(series38);
+            this.chNotLinear.Series.Add(series39);
             this.chNotLinear.Size = new System.Drawing.Size(422, 342);
             this.chNotLinear.TabIndex = 5;
             this.chNotLinear.Text = "chart1";
@@ -487,19 +504,123 @@
             // 
             // chFourier
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chFourier.ChartAreas.Add(chartArea4);
+            chartArea20.Name = "ChartArea1";
+            this.chFourier.ChartAreas.Add(chartArea20);
             this.chFourier.Location = new System.Drawing.Point(3, 3);
             this.chFourier.Name = "chFourier";
-            series8.BorderWidth = 2;
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series8.CustomProperties = "PointWidth=1";
-            series8.Name = "Series1";
-            this.chFourier.Series.Add(series8);
+            series40.BorderWidth = 2;
+            series40.ChartArea = "ChartArea1";
+            series40.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series40.CustomProperties = "PointWidth=1";
+            series40.Name = "Series1";
+            this.chFourier.Series.Add(series40);
             this.chFourier.Size = new System.Drawing.Size(685, 345);
             this.chFourier.TabIndex = 4;
             this.chFourier.Text = "chart1";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.groupBox6);
+            this.tabPage5.Controls.Add(this.dgPrediction);
+            this.tabPage5.Controls.Add(this.chPrediction);
+            this.tabPage5.Controls.Add(this.label10);
+            this.tabPage5.Controls.Add(this.tbAmountOfSteps);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(691, 354);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Prediction";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tbAmountOfSteps
+            // 
+            this.tbAmountOfSteps.Location = new System.Drawing.Point(551, 16);
+            this.tbAmountOfSteps.Name = "tbAmountOfSteps";
+            this.tbAmountOfSteps.Size = new System.Drawing.Size(100, 20);
+            this.tbAmountOfSteps.TabIndex = 0;
+            this.tbAmountOfSteps.Text = "10";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(459, 19);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Amount of steps:";
+            // 
+            // chPrediction
+            // 
+            chartArea16.Name = "ChartArea1";
+            this.chPrediction.ChartAreas.Add(chartArea16);
+            this.chPrediction.Location = new System.Drawing.Point(6, 3);
+            this.chPrediction.Name = "chPrediction";
+            series31.BorderWidth = 2;
+            series31.ChartArea = "ChartArea1";
+            series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series31.Name = "Series1";
+            series32.BorderWidth = 2;
+            series32.ChartArea = "ChartArea1";
+            series32.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series32.Name = "Series2";
+            this.chPrediction.Series.Add(series31);
+            this.chPrediction.Series.Add(series32);
+            this.chPrediction.Size = new System.Drawing.Size(418, 345);
+            this.chPrediction.TabIndex = 2;
+            this.chPrediction.Text = "chart1";
+            // 
+            // dgPrediction
+            // 
+            this.dgPrediction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPrediction.Location = new System.Drawing.Point(416, 129);
+            this.dgPrediction.Name = "dgPrediction";
+            this.dgPrediction.Size = new System.Drawing.Size(270, 219);
+            this.dgPrediction.TabIndex = 3;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.btnPrediction);
+            this.groupBox6.Controls.Add(this.rbNotLinearPrediction);
+            this.groupBox6.Controls.Add(this.rbLinearPrediction);
+            this.groupBox6.Location = new System.Drawing.Point(416, 42);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(270, 81);
+            this.groupBox6.TabIndex = 4;
+            this.groupBox6.TabStop = false;
+            // 
+            // rbLinearPrediction
+            // 
+            this.rbLinearPrediction.AutoSize = true;
+            this.rbLinearPrediction.Location = new System.Drawing.Point(14, 20);
+            this.rbLinearPrediction.Name = "rbLinearPrediction";
+            this.rbLinearPrediction.Size = new System.Drawing.Size(110, 17);
+            this.rbLinearPrediction.TabIndex = 0;
+            this.rbLinearPrediction.TabStop = true;
+            this.rbLinearPrediction.Text = "Linear Regression";
+            this.rbLinearPrediction.UseVisualStyleBackColor = true;
+            this.rbLinearPrediction.Click += new System.EventHandler(this.rbLinearPrediction_Click);
+            // 
+            // rbNotLinearPrediction
+            // 
+            this.rbNotLinearPrediction.AutoSize = true;
+            this.rbNotLinearPrediction.Location = new System.Drawing.Point(14, 43);
+            this.rbNotLinearPrediction.Name = "rbNotLinearPrediction";
+            this.rbNotLinearPrediction.Size = new System.Drawing.Size(130, 17);
+            this.rbNotLinearPrediction.TabIndex = 1;
+            this.rbNotLinearPrediction.TabStop = true;
+            this.rbNotLinearPrediction.Text = "Not Linear Regrassion";
+            this.rbNotLinearPrediction.UseVisualStyleBackColor = true;
+            this.rbNotLinearPrediction.Click += new System.EventHandler(this.rbNotLinearPrediction_Click);
+            // 
+            // btnPrediction
+            // 
+            this.btnPrediction.Location = new System.Drawing.Point(150, 19);
+            this.btnPrediction.Name = "btnPrediction";
+            this.btnPrediction.Size = new System.Drawing.Size(102, 41);
+            this.btnPrediction.TabIndex = 2;
+            this.btnPrediction.Text = "Make prediction";
+            this.btnPrediction.UseVisualStyleBackColor = true;
+            this.btnPrediction.Click += new System.EventHandler(this.btnPrediction_Click);
             // 
             // Form1
             // 
@@ -529,6 +650,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chNotLinear)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chFourier)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chPrediction)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPrediction)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -571,6 +698,15 @@
         private System.Windows.Forms.TextBox tbNotLinearTrendF;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chFourier;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.DataGridView dgPrediction;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chPrediction;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbAmountOfSteps;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnPrediction;
+        private System.Windows.Forms.RadioButton rbNotLinearPrediction;
+        private System.Windows.Forms.RadioButton rbLinearPrediction;
     }
 }
 

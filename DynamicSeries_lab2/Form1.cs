@@ -14,6 +14,7 @@ namespace DynamicSeries_lab2
         public NotLinearRegression NotLinearRegression { get; set; }
         public SeriesQuality QualityIndicatorsLinearTrend { get; set; }
         public SeriesQuality QualityIndicatorsNotLinearTrend { get; set; }
+        public Fourier Fourier { get; set; }
 
         public Form1()
         {
@@ -191,11 +192,44 @@ namespace DynamicSeries_lab2
         private void FillFourierChart(int period)
         {
             chFourier.Series[0].Points.Clear();
-            var fourier = new Fourier(SeriesAfterSmoothing, period);
+            Fourier = new Fourier(SeriesAfterSmoothing, period);
             for (int i = 0; i < Series.AmountOfElements; i++)
             {
-                chFourier.Series[0].Points.AddXY(SeriesAfterSmoothing.Index[i], fourier.Y[i]);
+                chFourier.Series[0].Points.AddXY(SeriesAfterSmoothing.Index[i], Fourier.Y[i]);
             }
+        }
+        #endregion
+
+        #region Prediction
+        private void rbLinearPrediction_Click(object sender, EventArgs e)
+        {
+            rbLinearPrediction.Checked = true;
+            rbNotLinearPrediction.Checked = false;
+        }
+
+        private void rbNotLinearPrediction_Click(object sender, EventArgs e)
+        {
+            rbLinearPrediction.Checked = false;
+            rbNotLinearPrediction.Checked = true;
+        }
+
+        private void btnPrediction_Click(object sender, EventArgs e)
+        {
+            chPrediction.Series[0].Points.Clear();
+            chPrediction.Series[1].Points.Clear();
+
+            for (int i = 0; i < SeriesAfterSmoothing.AmountOfElements; i++)
+            {
+                chPrediction.Series[0].Points.AddXY(i + 1, SeriesAfterSmoothing.Value[i]);
+                //chPrediction.Series[1].Points.AddXY(i + 1, SeriesAfterSmoothing.Value[i]);
+            }
+
+            var prediction = rbLinearPrediction.Checked
+                ? new Prediction(LinearRegression.A0, LinearRegression.A1, SeriesAfterSmoothing.Value, true, Fourier)
+                : new Prediction(NotLinearRegression.A0, NotLinearRegression.A1, NotLinearRegression.Gamma,
+                    SeriesAfterSmoothing.Value, false, Fourier);
+            for (int i=0;i<Convert.ToInt32(tbAmountOfSteps.Text);i++)
+                chPrediction.Series[1].Points.AddXY(SeriesAfterSmoothing.AmountOfElements + i, prediction.PredictValue(SeriesAfterSmoothing.AmountOfElements + i + 1));
         }
         #endregion
     }
